@@ -1,35 +1,58 @@
-import { Link, useParams } from "react-router-dom";
-import RootLayout from "../layout/RootLayout";
-import { useQuery } from "@tanstack/react-query";
-import { fetchCharacterById, fetchPlanetById } from "../api";
 import CharacterSvg from "../assets/character.svg";
+import RootLayout from "../layout/RootLayout";
+import { fetchCharacterById, fetchPlanetById } from "../api";
+import { Link, useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../components/Loading";
 
 const CharacterDetails = () => {
-  const { id } = useParams();
+  const { id } = useParams() as { id: string };
   const {
     data: character,
     isLoading: chacterDataLoading,
     isError: characterDataError,
   } = useQuery({
     queryKey: ["character", id],
-    queryFn: (key) => fetchCharacterById(key.queryKey[1]),
+    queryFn: () => fetchCharacterById(id),
+    enabled: !!id,
   });
 
+  const characterHomeworldUrl = character?.homeworld.split("/")[5] as string;
   const {
     data: homeworld,
     isLoading: homeworldDataLoading,
     isError: homeworldDataError,
   } = useQuery({
-    queryKey: ["homeworld", character?.homeworld.split("/")[5]],
-    queryFn: (key) => fetchPlanetById(key.queryKey[1]),
+    queryKey: ["homeworld", characterHomeworldUrl],
+    queryFn: () => fetchPlanetById(characterHomeworldUrl),
     enabled: !!character?.homeworld,
   });
+
+  if (homeworldDataLoading || chacterDataLoading) {
+    return (
+      <RootLayout>
+        <Loading />
+      </RootLayout>
+    );
+  }
+
+  if (homeworldDataError || characterDataError) {
+    return (
+      <RootLayout>
+        <div className="min-h-[50vh] flex justify-center items-center">
+          <p className="text-2xl md:text-3xl lg:text-3xl">
+            Error fetching data!
+          </p>
+        </div>
+      </RootLayout>
+    );
+  }
 
   return (
     <RootLayout>
       {character && (
         <div className="flex justify-center items-center">
-          <div className="bg-zinc-700 p-8 rounded-md w-[50%]">
+          <div className="bg-zinc-700 p-8 rounded-md lg:w-[50%] md:w-[90%] w-[100%]">
             <Link to="/characters" className="flex items-center gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -1,30 +1,33 @@
 import {
-  Character,
-  Planet,
-  Starship,
-  StarWarsCharactersAPIResponse,
-  StarWarsPlanetsAPIResponse,
-  StarWarsStarshipsAPIResponse,
+    Character, Planet, Starship, StarWarsCharactersAPIResponse, StarWarsPlanetsAPIResponse,
+    StarWarsStarshipsAPIResponse
 } from "../types";
 
-export const fetchCharacters =
-  async (): Promise<StarWarsCharactersAPIResponse> => {
-    try {
-      const response = await fetch("https://swapi.dev/api/people");
-      if (!response.ok) {
-        throw new Error("Failed to fetch characters data!");
-      }
-
-      return response.json();
-    } catch (error) {
-      console.log("Error fetching data!", error);
-      throw Error;
-    }
-  };
-
-export const fetchPlanets = async (): Promise<StarWarsPlanetsAPIResponse> => {
+export const fetchCharacters = async (
+  pageNumber: number
+): Promise<StarWarsCharactersAPIResponse> => {
   try {
-    const response = await fetch("https://swapi.dev/api/planets");
+    const response = await fetch(
+      `https://swapi.dev/api/people/?page=${pageNumber}`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch characters data!");
+    }
+
+    return response.json();
+  } catch (error) {
+    console.log("Error fetching data!", error);
+    throw Error;
+  }
+};
+
+export const fetchPlanets = async (
+  pageNumber: number
+): Promise<StarWarsPlanetsAPIResponse> => {
+  try {
+    const response = await fetch(
+      `https://swapi.dev/api/planets/?page=${pageNumber}`
+    );
     if (!response.ok) {
       throw new Error("Failed to fetch planets data!");
     }
@@ -35,23 +38,24 @@ export const fetchPlanets = async (): Promise<StarWarsPlanetsAPIResponse> => {
   }
 };
 
-export const fetchStarships =
-  async (): Promise<StarWarsStarshipsAPIResponse> => {
-    try {
-      const response = await fetch("https://swapi.dev/api/starships");
-      if (!response.ok) {
-        throw new Error("Failed to fetch planets data!");
-      }
-      return response.json();
-    } catch (error) {
-      console.log("Failed to fetch data!", error);
-      throw Error;
+export const fetchStarships = async (
+  pageNumber: number
+): Promise<StarWarsStarshipsAPIResponse> => {
+  try {
+    const response = await fetch(
+      `https://swapi.dev/api/starships/?page=${pageNumber}`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch planets data!");
     }
-  };
+    return response.json();
+  } catch (error) {
+    console.log("Failed to fetch data!", error);
+    throw Error;
+  }
+};
 
-export const fetchPlanetById = async (
-  id: string | undefined
-): Promise<Planet> => {
+export const fetchPlanetById = async (id: string): Promise<Planet> => {
   try {
     const response = await fetch(`https://swapi.dev/api/planets/${id}`);
     if (!response.ok) {
@@ -65,9 +69,7 @@ export const fetchPlanetById = async (
   }
 };
 
-export const fetchStarshipById = async (
-  id: string | undefined
-): Promise<Starship> => {
+export const fetchStarshipById = async (id: string): Promise<Starship> => {
   try {
     const response = await fetch(`https://swapi.dev/api/starships/${id}`);
     if (!response.ok) {
@@ -81,9 +83,7 @@ export const fetchStarshipById = async (
   }
 };
 
-export const fetchCharacterById = async (
-  id: string | undefined
-): Promise<Character> => {
+export const fetchCharacterById = async (id: string): Promise<Character> => {
   try {
     const response = await fetch(`https://swapi.dev/api/people/${id}`);
     if (!response.ok) {

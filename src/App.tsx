@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router-dom";
-import Planets from "./pages/Planets";
-import Characters from "./pages/Characters";
-import Starships from "./pages/Starships";
-import PlanetDetails from "./pages/PlanetDetails";
-import StarshipDetails from "./pages/StarshipDetails";
+
 import CharacterDetails from "./pages/CharacterDetails";
+import Characters from "./pages/Characters";
 import NotFound from "./pages/NotFound";
+import PlanetDetails from "./pages/PlanetDetails";
+import Planets from "./pages/Planets";
+import StarshipDetails from "./pages/StarshipDetails";
+import Starships from "./pages/Starships";
 
 function App() {
   return (

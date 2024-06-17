@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { Character } from "../types";
+import { Link } from "react-router-dom";
 
 interface CharacterCardProps {
   character: Character;

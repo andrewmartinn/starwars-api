@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div>
-      <div className="container mx-auto py-6 flex justify-between items-center">
+    <div className="w-full">
+      <div className="container mx-auto py-6 px-6 flex justify-between items-center">
         <Link to="/" className="font-bold text-xl text-yellow-300 ">
           Starwars API
         </Link>

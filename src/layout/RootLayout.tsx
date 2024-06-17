@@ -7,9 +7,9 @@ interface RootLayoutProps {
 
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
-    <div className="bg-dark text-white min-h-screen font-kanit">
+    <div className="bg-dark text-white min-h-screen font-kanit relative">
       <Header />
-      <main className="container mx-auto py-10 ">{children}</main>
+      <main className="container px-6 mx-auto py-10 ">{children}</main>
       <Footer />
     </div>
   );

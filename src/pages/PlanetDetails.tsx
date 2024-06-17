@@ -1,23 +1,40 @@
-import { Link, useParams } from "react-router-dom";
-import RootLayout from "../layout/RootLayout";
-import { useQuery } from "@tanstack/react-query";
-import { fetchPlanetById } from "../api";
+import Loading from "../components/Loading";
 import PlanetSvg from "../assets/planet.svg";
+import RootLayout from "../layout/RootLayout";
+import { fetchPlanetById } from "../api";
+import { Link, useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 const PlanetDetails = () => {
-  const { id } = useParams();
-
+  const { id } = useParams() as { id: string };
   const {
     data: planet,
     isLoading,
     isError,
   } = useQuery({
     queryKey: ["planet", id],
-    queryFn: (key) => fetchPlanetById(key.queryKey[1]),
+    queryFn: () => fetchPlanetById(id),
   });
 
-  console.log(planet, isLoading, isError);
+  if (isLoading) {
+    return (
+      <RootLayout>
+        <Loading />
+      </RootLayout>
+    );
+  }
 
+  if (isError) {
+    return (
+      <RootLayout>
+        <div className="min-h-[50vh] flex justify-center items-center">
+          <p className="text-2xl md:text-3xl lg:text-3xl">
+            Error fetching data!
+          </p>
+        </div>
+      </RootLayout>
+    );
+  }
   return (
     <RootLayout>
       {planet && (

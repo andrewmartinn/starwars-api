@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import RootLayout from "../layout/RootLayout";
+import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (

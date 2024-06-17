@@ -6,7 +6,6 @@ interface PlanetCardProps {
 }
 
 const PlanetCard: React.FC<PlanetCardProps> = ({ planet }) => {
-  console.log(planet.url.split("/")[5]);
   return (
     <div>
       <div className=" px-6 py-3 bg-zinc-700 rounded-md">

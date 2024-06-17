@@ -6,6 +6,7 @@ interface PlanetCardProps {
 }
 
 const PlanetCard: React.FC<PlanetCardProps> = ({ planet }) => {
+  console.log(planet.url.split("/")[5]);
   return (
     <div>
       <div className=" px-6 py-3 bg-zinc-700 rounded-md">
@@ -13,7 +14,7 @@ const PlanetCard: React.FC<PlanetCardProps> = ({ planet }) => {
         <p className="mb-1">Population - {planet.population}</p>
         <p>Climate - {planet.climate}</p>
         <div className="flex justify-end items-center gap-1">
-          <Link to="/">Read More</Link>
+          <Link to={`/planets/${planet.url.split("/")[5]}`}>Read More</Link>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

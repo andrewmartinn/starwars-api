@@ -12,7 +12,7 @@ const StarshipCard: React.FC<StarshipCardProps> = ({ starship }) => {
       <p className="mb-1">{starship.model}</p>
       <p>Crew - {starship.crew}</p>
       <div className="flex justify-end items-center gap-1">
-        <Link to="/">Read More</Link>
+        <Link to={`/starships/${starship.url.split("/")[5]}`}>Read More</Link>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

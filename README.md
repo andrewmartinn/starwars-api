@@ -1,30 +1,65 @@
-# React + TypeScript + Vite
+# starwars-api
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React app that consumes the Star Wars API to present information about characters, starships, and planets from the Star Wars universe.
 
-Currently, two official plugins are available:
+## Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Vite](https://vitejs.dev/): Fast, opinionated web dev build tool
+- [Tailwind CSS](https://tailwindcss.com/): A utility-first CSS framework for rapid UI development
+- [React Router](https://reactrouter.com/): Declarative routing for React applications
+- [Hero Icons](https://heroicons.com/): Beautiful hand-crafted SVG icons for your web projects
+- [TypeScript](https://www.typescriptlang.org/): Typed superset of JavaScript
+- [React Query](https://react-query.tanstack.com/): Data fetching and caching library for React
+- [SWAPI (Star Wars API)](https://swapi.dev/): The Star Wars API for fetching detailed information about characters, starships, and planets from the Star Wars universe
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Display list of Star Wars characters, starships, and planets fetched from SWAPI (Star Wars API)
+- Details pages for each category (characters, starships, planets) providing additional information
+- Pagination for efficiently navigating through multiple pages of characters, starships, and planets
 
-- Configure the top-level `parserOptions` property like this:
+## Project Outcomes
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+- Implemented React Query for performing external data fetching operations, learned how to use dynamic query variables on the useQuery hook and manage multiple queries depedent on each other. Additionally learned on managing the state and reder UI dynamically based on React Query.
+
+- Pagination: Successfully integrated pagination functionality, which allows users to browse through multiple pages of characters, starships, and planets.
+
+- Tailwind CSS and Vite Setup: Configured Tailwind CSS along with Vite and created custom UI components with Tailwind CSS.
+
+- REST API Integration: Consumed and Interacted with an external REST API to fetch and display data dynamically.
+
+## Project Setup
+
+This project was bootstrapped with [Vite](https://vitejs.dev/guide/)
+
+To get started you need to:
+
+- Clone the project
+- Install listed dependencies
+- Run available scripts
+
+### Install dependencies
+
+```
+yarn install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Run React dev server (http://localhost:3000)
+
+```
+yarn dev
+```
+
+### To build for production
+
+```
+yarn build
+```
+
+## Deployment
+
+To deploy this project run
+
+```
+  yarn run deploy
+```

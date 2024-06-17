@@ -1,4 +1,6 @@
 # starwars-api
+![swapi](https://github.com/andrewmartinn/starwars-api/assets/152824513/d723b70a-3383-4fe6-85a1-5f5adca3cd45)
+![swapi details](https://github.com/andrewmartinn/starwars-api/assets/152824513/3bb75cec-f2e7-4231-918e-425a8559b90e)
 
 React app that consumes the Star Wars API to present information about characters, starships, and planets from the Star Wars universe.
 
@@ -61,5 +63,5 @@ yarn build
 To deploy this project run
 
 ```
-  yarn run deploy
+yarn run deploy
 ```
